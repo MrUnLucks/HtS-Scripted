@@ -47,7 +47,7 @@ The naming conventions of the commits are as follows:
 
 #### Structure
 
-`prefix(branch-name)--short-description-of-changes`
+`prefix(branch-name): short description of changes`
 
 #### Examples
 
