@@ -1,4 +1,5 @@
 # Scripted HtS on WebSockets implementation
+This project aims to script the popular tabletop game Here To Slay into an approachable scripted webapp using Websocket and Nodejs for the connections and Game Logic and Vue for the FE layer
 
 ## Branches
 
