@@ -1,32 +1,54 @@
 // Import required modules
 import express from 'express';
 import http from 'http';
-import WebSocket from 'ws';
+import { Server } from 'socket.io';
+import cors from 'cors';
+
 // Create an Express app instance
 const app = express();
+app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(express.json());
 
 // Create an HTTPS server using the Express app instance
 const server = http.createServer(app);
-// Create a WebSocket server instance and attach it to the HTTP server
-const websocketServer = new WebSocket.Server({ server });
+
+// Create a Socket.IO server instance and attach it to the HTTP server
+const io = new Server(server);
+
 // Start the server listening on port 3000
-server.listen(3000, () => {
-  console.log('WebSocket server started on wss://localhost:3000');
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Socket.IO server started on http://localhost:${PORT}`);
+});
+
+// Listen for Socket.IO connections
+io.on('connection', (socket) => {
+  // Log a message when a new client connects
+  console.log('client connected.');
+
+  // Listen for incoming Socket.IO messages
+  socket.on('message', (data) => {
+    // Broadcast the message to all connected clients
+    socket.broadcast.emit('message', data);
+    console.log('message', data);
+  });
+
+  // Listen for Socket.IO connection close events
+  socket.on('disconnect', () => {
+    // Log a message when a client disconnects
+    console.log('Client disconnected');
+  });
 });
 
 //Listen for WebSocket connections
-websocketServer.on('connection', (socket) => {
+io.on('connection', (socket) => {
   // Log a message when a new client connects
   console.log('client connected.');
   // Listen for incoming WebSocket messages
   socket.on('message', (data) => {
     // Broadcast the message to all connected clients
-    websocketServer.clients.forEach(function each(client) {
-      if (client !== socket && client.readyState === WebSocket.OPEN) {
-        client.send(data.toString());
-        console.log('message', data.toString());
-      }
-    });
+    socket.broadcast.emit('message', data);
+    console.log('message', data);
   });
   // Listen for WebSocket connection close events
   socket.on('close', () => {

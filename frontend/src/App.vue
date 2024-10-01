@@ -1,8 +1,7 @@
-<script setup lang="ts">
-import TestWebSocket from "./components/TestWebSocket.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
+  <ConnectionState />
   <TestWebSocket />
 </template>
 
