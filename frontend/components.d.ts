@@ -9,6 +9,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     ConnectionManager: typeof import('./src/components/ConnectionManager.vue')['default']
     ConnectionState: typeof import('./src/components/ConnectionState.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     TestWebSocket: typeof import('./src/components/TestWebSocket.vue')['default']
   }
 }
