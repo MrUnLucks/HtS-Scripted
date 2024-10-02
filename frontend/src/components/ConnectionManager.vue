@@ -15,7 +15,9 @@ const emit = () => {
 </script>
 
 <template>
-  <button @click="connect()">Connect</button>
-  <button @click="disconnect()">Disconnect</button>
-  <button @click="emit">Emit</button>
+  <div class="flex gap-4">
+    <button class="rounded-lg border-2 border-gray-500" @click="connect()">Connect</button>
+    <button @click="disconnect()">Disconnect</button>
+    <button @click="emit">Emit</button>
+  </div>
 </template>
