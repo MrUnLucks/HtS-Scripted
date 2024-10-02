@@ -1,5 +1,4 @@
 // NOTE: https://socket.io/how-to/use-with-vue#listeners-in-a-child-component
-// ALL LISTENERS should be here!
 import { reactive } from 'vue';
 import { io } from 'socket.io-client';
 

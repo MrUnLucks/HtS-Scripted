@@ -6,7 +6,11 @@ import cors from 'cors';
 
 // Create an Express app instance
 const app = express();
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+  }),
+);
 app.use(express.json());
 
 // Create an HTTPS server using the Express app instance
@@ -35,23 +39,6 @@ io.on('connection', (socket) => {
 
   // Listen for Socket.IO connection close events
   socket.on('disconnect', () => {
-    // Log a message when a client disconnects
-    console.log('Client disconnected');
-  });
-});
-
-//Listen for WebSocket connections
-io.on('connection', (socket) => {
-  // Log a message when a new client connects
-  console.log('client connected.');
-  // Listen for incoming WebSocket messages
-  socket.on('message', (data) => {
-    // Broadcast the message to all connected clients
-    socket.broadcast.emit('message', data);
-    console.log('message', data);
-  });
-  // Listen for WebSocket connection close events
-  socket.on('close', () => {
     // Log a message when a client disconnects
     console.log('Client disconnected');
   });

@@ -1,17 +1,33 @@
-<!-- <script setup lang="ts">
-import { ref, watch } from 'vue';
-
-watch(data, (newVal) => {
-  history.value.push(`server: ${newVal}`);
-});
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+import { socket } from '../socket';
 
 const history = ref<string[]>([]);
 const message = ref('');
+
 const sendData = () => {
   history.value.push(`client: ${message.value}`);
-  send(message.value);
+  socket.emit('message', message.value);
   message.value = '';
 };
+
+onMounted(() => {
+  socket.on('connect', () => {
+    console.log('Connected to server');
+  });
+
+  socket.on('message', (newVal: string) => {
+    history.value.push(`server: ${newVal}`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Disconnected from server');
+  });
+});
+
+onUnmounted(() => {
+  socket.disconnect();
+});
 </script>
 
 <template>
@@ -22,4 +38,4 @@ const sendData = () => {
     </form>
     <p v-for="message in history">{{ message }}</p>
   </div>
-</template> -->
+</template>
