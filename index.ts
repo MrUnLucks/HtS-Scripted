@@ -37,6 +37,12 @@ io.on('connection', (socket) => {
     console.log('message', data);
   });
 
+  socket.on('set_name', (data: { name: string }) => {
+    // console.log(io.sockets.adapter.sids.size);
+
+    console.log(data.name);
+  });
+
   // Listen for Socket.IO connection close events
   socket.on('disconnect', () => {
     // Log a message when a client disconnects
