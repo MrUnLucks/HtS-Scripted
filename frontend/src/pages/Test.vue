@@ -2,6 +2,6 @@
   <div class="flex flex-col gap-2">
     <ConnectionState />
     <ConnectionManager />
-    <TestWebSocket />
+    <Chat />
   </div>
 </template>

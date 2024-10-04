@@ -10,10 +10,6 @@ const disconnect = () => {
   socket.disconnect();
 };
 
-const emit = () => {
-  socket.emit('message', 'payload');
-};
-
 const connected = computed(() => state.connected);
 </script>
 
@@ -23,7 +19,6 @@ const connected = computed(() => state.connected);
     <div class="flex gap-4">
       <button class="rounded-lg border-2 border-gray-500" @click="connect()">Connect</button>
       <button @click="disconnect()">Disconnect</button>
-      <button @click="emit">Emit</button>
     </div>
   </div>
 </template>

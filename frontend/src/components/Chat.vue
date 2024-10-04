@@ -1,32 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { socket } from '../socket';
 
 const history = ref<string[]>([]);
 const message = ref('');
 
 const sendData = () => {
-  history.value.push(`client: ${message.value}`);
   socket.emit('message', message.value);
   message.value = '';
 };
 
+// TODO: move all types to dedicated module
+type MessagePayload = { name: string; message: string };
+
 onMounted(() => {
-  socket.on('connect', () => {
-    console.log('Connected to server');
+  socket.on('message', (data: MessagePayload) => {
+    history.value.push(`${data.name} : ${data.message}`);
   });
 
-  socket.on('message', (newVal: string) => {
-    history.value.push(`server: ${newVal}`);
+  socket.on('player_join', (name: string) => {
+    history.value.push(`Player join: ${name}`);
   });
-
-  socket.on('disconnect', () => {
-    console.log('Disconnected from server');
-  });
-});
-
-onUnmounted(() => {
-  socket.disconnect();
 });
 </script>
 

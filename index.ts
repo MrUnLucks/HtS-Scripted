@@ -1,7 +1,7 @@
 // Import required modules
 import express from 'express';
 import http from 'http';
-import { Server } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 import cors from 'cors';
 
 // Create an Express app instance
@@ -25,22 +25,25 @@ server.listen(PORT, () => {
   console.log(`Socket.IO server started on http://localhost:${PORT}`);
 });
 
-// Listen for Socket.IO connections
-io.on('connection', (socket) => {
+type ExtendedSocket = Socket & { name?: string; id?: string };
+
+// TODO: move all listeners to dedicated dir
+io.on('connection', (socket: ExtendedSocket) => {
   // Log a message when a new client connects
   console.log('client connected.');
 
   // Listen for incoming Socket.IO messages
-  socket.on('message', (data) => {
+  socket.on('message', (message: string) => {
     // Broadcast the message to all connected clients
-    socket.broadcast.emit('message', data);
-    console.log('message', data);
+    socket.broadcast.emit('message', { name: socket.name, message });
   });
 
-  socket.on('set_name', (data: { name: string }) => {
+  socket.on('login', (data: { name: string }) => {
     // console.log(io.sockets.adapter.sids.size);
+    socket.name = data.name;
+    socket.id = `user_${data.name}_${Date.now().toString()}_${Math.random().toString().substring(2, 9)}`;
 
-    console.log(data.name);
+    socket.broadcast.emit('player_join', socket.name);
   });
 
   // Listen for Socket.IO connection close events

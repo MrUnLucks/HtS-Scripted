@@ -8,12 +8,17 @@ const router = useRouter();
 
 const submitName = () => {
   socket.connect();
-  socket.emit('set_name', { name: name.value });
+  socket.emit('login', { name: name.value });
   router.push('/test');
 };
 </script>
 
 <template>
-  <p class="text-xl">Name:</p>
-  <input @keyup.enter="submitName" type="text" v-model="name" />
+  <div class="flex flex-col gap-4">
+    <p class="text-xl">Name:</p>
+    <div class="flex gap-2">
+      <input @keyup.enter="submitName" type="text" v-model="name" />
+      <button @click="submitName" type="submit">Send</button>
+    </div>
+  </div>
 </template>
