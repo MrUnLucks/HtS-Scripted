@@ -4,7 +4,6 @@ import http from 'http';
 import { Server, Socket } from 'socket.io';
 import cors from 'cors';
 
-// Create an Express app instance
 const app = express();
 app.use(
   cors({
@@ -29,12 +28,9 @@ type ExtendedSocket = Socket & { name?: string; id?: string };
 
 // TODO: move all listeners to dedicated dir
 io.on('connection', (socket: ExtendedSocket) => {
-  // Log a message when a new client connects
   console.log('client connected.');
 
-  // Listen for incoming Socket.IO messages
   socket.on('message', (message: string) => {
-    // Broadcast the message to all connected clients
     socket.broadcast.emit('message', { name: socket.name, message });
   });
 
@@ -46,9 +42,7 @@ io.on('connection', (socket: ExtendedSocket) => {
     socket.broadcast.emit('player_join', socket.name);
   });
 
-  // Listen for Socket.IO connection close events
   socket.on('disconnect', () => {
-    // Log a message when a client disconnects
     console.log('Client disconnected');
   });
 });
