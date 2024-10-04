@@ -2,6 +2,26 @@
 
 This project aims to script the popular tabletop game Here To Slay into an approachable scripted webapp. This monorepo is using Websocket and Nodejs for the connections and Game Logic and Vue for the FE layer
 
+## How to start the project
+
+- Install dependencies on the Websocket server:
+
+  `pnpm i`
+
+  and start the server with:
+
+  `pnpm run dev`
+
+- On a different terminal install dependencies on the frontend layer:
+
+  `cd frontend`
+
+  `pnpm i`
+
+  and start the Vue App:
+
+  `pnpm run dev`
+
 ## Branches
 
 The naming conventions of the branches are as follows:
