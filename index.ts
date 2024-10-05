@@ -3,6 +3,8 @@ import express from 'express';
 import http from 'http';
 import { Server, Socket } from 'socket.io';
 import cors from 'cors';
+import { ExtendedSocket } from './types';
+import fs from 'fs';
 import {
   players,
   addPlayer,
@@ -31,11 +33,17 @@ server.listen(PORT, () => {
   console.log(`Socket.IO server started on http://localhost:${PORT}`);
 });
 
-type ExtendedSocket = Socket & { name?: string; id?: string };
+const listenersFiles = fs.readdirSync('./listeners').filter((file) => file.endsWith('.ts'));
 
 // TODO: move all listeners to dedicated dir
-io.on('connection', (socket: ExtendedSocket) => {
+io.on('connection', async (socket: ExtendedSocket) => {
   console.log('client connected.');
+  for (const file of listenersFiles) {
+    const rawListener = await import(`./listeners/${file}`);
+    const listener = rawListener.default;
+    if (!listener) console.error(`listener ${listener} does not contain a default import!`);
+    socket.on(listener.name, (...args: any[]) => listener.execute(socket, ...args));
+  }
 
   socket.on('message', (message: string) => {
     socket.broadcast.emit('message', { name: socket.name, message });
