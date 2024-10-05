@@ -3,6 +3,13 @@ import express from 'express';
 import http from 'http';
 import { Server, Socket } from 'socket.io';
 import cors from 'cors';
+import {
+  players,
+  addPlayer,
+  areAllPlayersReady,
+  setPlayerReady,
+  removePlayer,
+} from './lobby/players';
 
 const app = express();
 app.use(
@@ -39,10 +46,26 @@ io.on('connection', (socket: ExtendedSocket) => {
     socket.name = data.name;
     socket.id = `user_${data.name}_${Date.now().toString()}_${Math.random().toString().substring(2, 9)}`;
 
+    addPlayer({ id: socket.id, name: socket.name });
+
+    socket.broadcast.emit('players_lobby', players);
     socket.broadcast.emit('player_join', socket.name);
   });
 
+  socket.on('request_players', () => {
+    socket.emit('players_lobby', players);
+  });
+
+  socket.on('player_ready', () => {
+    setPlayerReady(socket.id);
+    socket.broadcast.emit('players_lobby', players);
+    if (areAllPlayersReady()) {
+      socket.broadcast.emit('game_start');
+    }
+  });
+
   socket.on('disconnect', () => {
+    removePlayer(socket.id);
     console.log('Client disconnected');
   });
 });

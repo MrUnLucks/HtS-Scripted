@@ -9,7 +9,7 @@ const router = useRouter();
 const submitName = () => {
   socket.connect();
   socket.emit('login', { name: name.value });
-  router.push('/test');
+  router.push('/lobby');
 };
 </script>
 
