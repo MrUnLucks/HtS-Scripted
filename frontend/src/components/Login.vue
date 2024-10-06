@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import { onMounted, ref } from 'vue';
-import { socket } from '../socket';
+import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { socket } from '../socket'
 
-const name = ref();
-const router = useRouter();
+const name = ref()
+const router = useRouter()
 
 onMounted(() => {
-  socket.disconnect();
-});
+  socket.disconnect()
+})
 
 const submitName = () => {
-  socket.connect();
-  socket.emit('login', { name: name.value });
-  router.push('/lobby');
-};
+  socket.connect()
+  socket.emit('login', { name: name.value })
+  router.push('/lobby')
+}
 </script>
 
 <template>
@@ -25,4 +25,5 @@ const submitName = () => {
       <button @click="submitName" type="submit">Send</button>
     </div>
   </div>
+  <!-- <img src="/src/assets/heroes/enchantler.png" /> -->
 </template>
