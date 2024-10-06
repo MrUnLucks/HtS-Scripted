@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { socket, state } from '../socket';
+import { computed } from 'vue'
+import { socket, state } from '../socket'
 
 const connect = () => {
-  socket.connect();
-};
+  socket.connect()
+}
 
 const disconnect = () => {
-  socket.disconnect();
-};
+  socket.disconnect()
+}
 
-const connected = computed(() => state.connected);
+const connected = computed(() => state.connected)
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ReadyIconProps } from './ReadyIcon.props';
+import { ReadyIconProps } from './ReadyIcon.props'
 
-defineProps<ReadyIconProps>();
+defineProps<ReadyIconProps>()
 </script>
 
 <template>

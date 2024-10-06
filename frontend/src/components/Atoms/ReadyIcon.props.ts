@@ -1,3 +1,3 @@
 export type ReadyIconProps = {
-  isReady?: boolean;
-};
+  isReady?: boolean
+}

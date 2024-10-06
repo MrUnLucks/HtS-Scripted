@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { socket } from '../socket';
-import { useRouter } from 'vue-router';
-const router = useRouter();
+import { onMounted, ref } from 'vue'
+import { socket } from '../socket'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 onMounted(() => {
-  socket.emit('request_players');
-});
+  socket.emit('request_players')
+})
 
 // TODO: unify type payload for BE and FE
 
-const players = ref<any>();
+const players = ref<any>()
 socket.on('players_lobby', (playersLobby: any) => {
-  players.value = playersLobby;
-});
+  players.value = playersLobby
+})
 
 const readyHandler = () => {
-  socket.emit('player_ready');
-};
+  socket.emit('player_ready')
+}
 
 socket.on('game_start', () => {
-  router.push('/test');
-});
+  router.push('/test')
+})
 </script>
 <template>
   <div class="flex flex-col gap-6">
