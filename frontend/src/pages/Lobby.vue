@@ -9,7 +9,6 @@ onMounted(() => {
 });
 
 // TODO: unify type payload for BE and FE
-type PlayerReadyState = { name: string; ready: boolean; id: string };
 
 const players = ref<any>();
 socket.on('players_lobby', (playersLobby: any) => {
