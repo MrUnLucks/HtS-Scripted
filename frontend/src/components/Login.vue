@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { socket } from '../socket';
 
 const name = ref();
 const router = useRouter();
+
+onMounted(() => {
+  socket.disconnect();
+});
 
 const submitName = () => {
   socket.connect();

@@ -1,5 +1,15 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const toLogin = () => {
+  router.push('/');
+};
+</script>
 <template>
-  <div>
+  <div class="flex flex-col gap-4">
+    <button @click="toLogin">To Login</button>
     <main>
       <RouterView />
     </main>
