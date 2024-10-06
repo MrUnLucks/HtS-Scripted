@@ -2,6 +2,9 @@
 import { useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { socket } from '../socket'
+import { usePlayerStore } from '../stores/player'
+
+const playerStore = usePlayerStore()
 
 const name = ref()
 const router = useRouter()
@@ -13,6 +16,9 @@ onMounted(() => {
 const submitName = () => {
   socket.connect()
   socket.emit('login', { name: name.value })
+  socket.on('your_id', (id) => {
+    playerStore.myId = id
+  })
   router.push('/lobby')
 }
 </script>

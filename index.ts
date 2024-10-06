@@ -18,7 +18,7 @@ app.use(express.json())
 const server = http.createServer(app)
 
 // Create a Socket.IO server instance and attach it to the HTTP server
-const io: ExtendedServer = new Server(server)
+export const io: ExtendedServer = new Server(server)
 
 // Start the server listening on port 3000
 const PORT = 3000

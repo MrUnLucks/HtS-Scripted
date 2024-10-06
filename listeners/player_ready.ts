@@ -1,3 +1,4 @@
+import { gameLoop } from '../game/gameLoop'
 import { areAllPlayersReady, players, setPlayerReady } from '../lobby/players'
 import { ExtendedServer, ExtendedSocket } from '../types/'
 
@@ -8,6 +9,7 @@ export default {
     io.emit('players_lobby', players)
     if (areAllPlayersReady()) {
       io.emit('game_start')
+      gameLoop()
     }
   },
 }
