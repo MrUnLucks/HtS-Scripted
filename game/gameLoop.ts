@@ -3,7 +3,7 @@ import { io } from '..'
 
 export const gameLoop = async () => {
   let turnNumber = 0
-  const sockets = await io.sockets.fetchSockets()
+  const sockets = Array.from(io.sockets.sockets.values())
 
   randomizePlayersTurn()
   while (turnNumber < 2) {
@@ -23,10 +23,8 @@ export const gameLoop = async () => {
 
       // Wait for the player to finish their turn
       await new Promise((resolve) => {
-        console.log('waiting')
         socket.on(`finish_turn`, () => {
-          console.log('finish turn')
-          resolve(undefined)
+          resolve('')
         })
       })
     }
