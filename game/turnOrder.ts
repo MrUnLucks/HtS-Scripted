@@ -1,4 +1,7 @@
-export const turnOrder: Array<string> = []
+export let turnOrder: Array<string> = []
+export const resetTurnOrder = () => {
+  turnOrder = []
+}
 export const addPlayerTurn = (id: string) => {
   turnOrder.push(id)
 }
