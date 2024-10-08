@@ -19,7 +19,8 @@ const submitName = () => {
   socket.on('your_id', (id) => {
     playerStore.myId = id
   })
-  router.push('/lobby')
+  // router.push('/lobby') // shortcircuit only for testing purpose
+  router.push('/test')
 }
 </script>
 
