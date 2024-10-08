@@ -3,7 +3,6 @@ import { io } from '..'
 
 export const gameLoop = async () => {
   let turnNumber = 0
-  resetTurnOrder()
   const sockets = Array.from(io.sockets.sockets.values())
 
   randomizePlayersTurn()

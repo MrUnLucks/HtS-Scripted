@@ -5,6 +5,10 @@ export const resetTurnOrder = () => {
 export const addPlayerTurn = (id: string) => {
   turnOrder.push(id)
 }
+export const removePlayerTurn = (id: string) => {
+  const playerToRemoveIndex = turnOrder.findIndex((playerId) => playerId === id)
+  turnOrder.splice(playerToRemoveIndex, 1)
+}
 // TODO: Better implementation possible: Fisher-Yates shuffle
 export const randomizePlayersTurn = () => {
   for (let i = turnOrder.length - 1; i > 0; i--) {
