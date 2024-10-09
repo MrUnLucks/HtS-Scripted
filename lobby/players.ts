@@ -1,5 +1,8 @@
-type Player = { id: string; ready: boolean; name: string }
+import { Leaders } from '../game/assignLeader'
+
+export type Player = { id: string; ready: boolean; name: string; leader?: Leaders[number] }
 export const players: { [id: string]: Player } = {}
+export type Players = typeof players
 
 export const addPlayer = (player: { id: string; name: string }) => {
   players[player.id] = { id: player.id, ready: false, name: player.name }

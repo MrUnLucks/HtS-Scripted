@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Board: typeof import('./src/components/2nd Level/Board.vue')['default']
     Chat: typeof import('./src/components/Chat.vue')['default']
     ConnectionManager: typeof import('./src/components/ConnectionManager.vue')['default']
     Login: typeof import('./src/components/Login.vue')['default']
