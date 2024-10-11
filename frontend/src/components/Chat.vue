@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { socket } from '../socket'
-import { usePlayerStore } from '../stores/player'
-
-const { myId } = usePlayerStore()
 
 const history = ref<string[]>([])
 const message = ref('')
@@ -25,27 +22,18 @@ onMounted(() => {
     history.value.push(`Player join: ${name}`)
   })
 })
-
-const currentPlayer = ref('')
-
-socket.on('turn_start', ({ name, id }: { name: string; id: string }) => {
-  currentPlayer.value = id === myId ? 'Myself' : name
-})
-
-const finishTurn = () => {
-  socket.emit('finish_turn')
-}
 </script>
 
 <template>
   <div>
     <form @submit.prevent="sendData">
-      <input type="text" v-model="message" />
-      <button type="submit">Send</button>
+      <div class="flex flex-col gap-4">
+        <label for="">Chat:</label>
+        <div class="flex gap-2">
+          <input type="text" v-model="message" /><button type="submit">Send</button>
+        </div>
+      </div>
     </form>
     <p v-for="message in history">{{ message }}</p>
-    <p>Current player: {{ currentPlayer }}</p>
-    <button @click="finishTurn">Finish Turn</button>
-    <p>MyID:{{ myId }}</p>
   </div>
 </template>

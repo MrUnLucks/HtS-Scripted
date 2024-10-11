@@ -7,7 +7,7 @@ export default {
   execute(socket: ExtendedSocket, io: ExtendedServer, data: { name: string }) {
     // console.log(io.sockets.adapter.sids.size);
     socket.data.name = data.name
-    socket.data.id = `user_${data.name}_${Date.now().toString()}_${Math.random().toString().substring(2, 9)}`
+    socket.data.id = `${data.name.toLowerCase()}_${Math.random().toString().substring(2, 9)}`
 
     addPlayer({ id: socket.data.id, name: socket.data.name })
     addPlayerTurn(socket.data.id)

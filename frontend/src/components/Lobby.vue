@@ -19,9 +19,7 @@ const readyHandler = () => {
   socket.emit('player_ready')
 }
 
-socket.on('game_start', () => {
-  router.push('/test')
-})
+socket.on('game_start', () => {})
 </script>
 <template>
   <div class="flex flex-col gap-6">
