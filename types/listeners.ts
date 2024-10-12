@@ -9,11 +9,14 @@ type Prettify<T> = {
   [K in keyof T]: T[K]
 } & {}
 
+type GenericExecute<T> = T extends { execute: (...args: infer A) => any } ? A : never
+
+type Payload<T> = GenericExecute<T> extends { 2: unknown } ? GenericExecute<T>[2] : undefined
+
 export type AllListeners = Prettify<
-  Record<typeof login.name, typeof login.execute> &
-    Record<typeof message.name, typeof message.execute> &
-    Record<typeof player_ready.name, typeof player_ready.execute> &
-    Record<typeof disconnect.name, typeof disconnect.execute> &
-    Record<typeof request_players.name, typeof request_players.execute> &
-    Record<typeof finish_turn.name, typeof finish_turn.execute>
+  Record<typeof login.name, Payload<typeof login>> &
+    Record<typeof message.name, Payload<typeof message>> &
+    Record<typeof player_ready.name, Payload<typeof player_ready>> &
+    Record<typeof request_players.name, typeof request_players> &
+    Record<typeof finish_turn.name, typeof finish_turn>
 >
