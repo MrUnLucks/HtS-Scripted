@@ -1,11 +1,14 @@
 import { turnOrder, randomizePlayersTurn, resetTurnOrder } from './turnOrder'
 import { io } from '..'
+import { drawInitialCards, initDeck } from './deck'
 
 export const gameLoop = async () => {
   let turnNumber = 0
   const sockets = Array.from(io.sockets.sockets.values())
 
   randomizePlayersTurn()
+  initDeck()
+  drawInitialCards()
   while (turnNumber < 2) {
     for (let i = 0; i < turnOrder.length; i++) {
       const playerId = turnOrder[i]

@@ -5,5 +5,85 @@
     "protecting_horn",
     "unstable_unicorn",
     "veiled_raider"
+  ],
+  "heroes": [
+    {
+      "name": "Wildshot",
+      "id": "wildshot",
+      "type": "ranger",
+      "diceValue": 8,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Sharp Fox",
+      "id": "sharp_fox",
+      "type": "ranger",
+      "diceValue": 5,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Wily Red",
+      "id": "wily_red",
+      "type": "ranger",
+      "diceValue": 10,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Bullseye",
+      "id": "bullseye",
+      "type": "ranger",
+      "diceValue": 7,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Serious Grey",
+      "id": "serious_grey",
+      "type": "ranger",
+      "diceValue": 9,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Hook",
+      "id": "hook",
+      "type": "ranger",
+      "diceValue": 6,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Hook",
+      "id": "hook",
+      "type": "ranger",
+      "diceValue": 6,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Hook",
+      "id": "hook",
+      "type": "ranger",
+      "diceValue": 6,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Hook",
+      "id": "hook",
+      "type": "ranger",
+      "diceValue": 6,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Hook",
+      "id": "hook",
+      "type": "ranger",
+      "diceValue": 6,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "+2/-2",
+      "values": [2, -2],
+      "effect": { "arguments": "a,b", "body": "return a+b;" },
+      "count": 3
+    }
   ]
 }
