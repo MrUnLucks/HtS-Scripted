@@ -36,45 +36,31 @@
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
+      "name": "Hoodwink",
+      "id": "hoodwink",
+      "type": "ranger",
+      "diceValue": 7,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Lookie Rookie",
+      "id": "lookie_rookie",
+      "type": "ranger",
+      "diceValue": 7,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
+      "name": "Quick Draw",
+      "id": "quick_draw",
+      "type": "ranger",
+      "diceValue": 7,
+      "effect": { "arguments": "a,b", "body": "return a+b;" }
+    },
+    {
       "name": "Serious Grey",
       "id": "serious_grey",
       "type": "ranger",
       "diceValue": 9,
-      "effect": { "arguments": "a,b", "body": "return a+b;" }
-    },
-    {
-      "name": "Hook",
-      "id": "hook",
-      "type": "ranger",
-      "diceValue": 6,
-      "effect": { "arguments": "a,b", "body": "return a+b;" }
-    },
-    {
-      "name": "Hook",
-      "id": "hook",
-      "type": "ranger",
-      "diceValue": 6,
-      "effect": { "arguments": "a,b", "body": "return a+b;" }
-    },
-    {
-      "name": "Hook",
-      "id": "hook",
-      "type": "ranger",
-      "diceValue": 6,
-      "effect": { "arguments": "a,b", "body": "return a+b;" }
-    },
-    {
-      "name": "Hook",
-      "id": "hook",
-      "type": "ranger",
-      "diceValue": 6,
-      "effect": { "arguments": "a,b", "body": "return a+b;" }
-    },
-    {
-      "name": "Hook",
-      "id": "hook",
-      "type": "ranger",
-      "diceValue": 6,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     }
   ],
