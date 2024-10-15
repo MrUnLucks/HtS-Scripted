@@ -10,56 +10,64 @@
     {
       "name": "Wildshot",
       "id": "wildshot",
-      "type": "ranger",
+      "class": "ranger",
+      "type": "hero",
       "diceValue": 8,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Sharp Fox",
       "id": "sharp_fox",
-      "type": "ranger",
+      "class": "ranger",
+      "type": "hero",
       "diceValue": 5,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Wily Red",
       "id": "wily_red",
-      "type": "ranger",
+      "class": "ranger",
+      "type": "hero",
       "diceValue": 10,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Bullseye",
       "id": "bullseye",
-      "type": "ranger",
+      "class": "ranger",
+      "type": "hero",
       "diceValue": 7,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Hoodwink",
       "id": "hoodwink",
-      "type": "ranger",
+      "class": "ranger",
+      "type": "hero",
       "diceValue": 7,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Lookie Rookie",
       "id": "lookie_rookie",
-      "type": "ranger",
+      "class": "ranger",
+      "type": "hero",
       "diceValue": 7,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Quick Draw",
       "id": "quick_draw",
-      "type": "ranger",
+      "type": "hero",
+      "class": "ranger",
       "diceValue": 7,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     },
     {
       "name": "Serious Grey",
       "id": "serious_grey",
-      "type": "ranger",
+      "type": "hero",
+      "class": "ranger",
       "diceValue": 9,
       "effect": { "arguments": "a,b", "body": "return a+b;" }
     }
@@ -67,6 +75,8 @@
   "modifiers": [
     {
       "name": "+2/-2",
+      "type": "modifier",
+      "id": "modifier_+2-2",
       "values": [2, -2],
       "effect": { "arguments": "a,b", "body": "return a+b;" },
       "count": 3

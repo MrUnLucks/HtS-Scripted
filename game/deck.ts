@@ -30,7 +30,6 @@ export const initDeck = () => {
   )
   allModifiers.forEach((modifier) => {
     for (let i = 0; i < modifier.count; i++) {
-      //@ts-ignore
       deck.push(modifier)
     }
   })
@@ -45,6 +44,7 @@ export const drawInitialCards = () => {
   playersId.forEach((playerId) => {
     let playerHand = players[playerId].handCards
     playerHand = deck.splice(0, NUMBER_OF_CARDS)
+    console.log(deck.map((el) => el.id))
 
     io.sockets.sockets.forEach((socket) => {
       if (playerId === socket.data.id) {
