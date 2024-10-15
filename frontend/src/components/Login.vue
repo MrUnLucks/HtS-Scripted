@@ -5,10 +5,11 @@ import { usePlayerStore } from '../stores/player'
 
 const playerStore = usePlayerStore()
 
-const nameModelValue = ref()
+const nameModelValue = ref('Asd')
 
 onMounted(() => {
   socket.disconnect()
+  submitName()
 })
 
 const submitName = () => {
@@ -22,12 +23,11 @@ const submitName = () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
+  <!-- <div class="flex flex-col gap-4">
     <p class="text-xl">Name:</p>
     <div class="flex gap-2">
       <input @keyup.enter="submitName" type="text" v-model="nameModelValue" />
       <button @click="submitName" type="submit">Send</button>
     </div>
-  </div>
-  <!-- <img src="/src/assets/heroes/enchantler.png" /> -->
+  </div> -->
 </template>

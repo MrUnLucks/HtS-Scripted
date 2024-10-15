@@ -9,7 +9,6 @@ const toLogin = () => {
 </script>
 <template>
   <div class="flex flex-col gap-4">
-    <button @click="toLogin">To Login</button>
     <main>
       <RouterView />
     </main>
