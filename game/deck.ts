@@ -15,7 +15,7 @@ export type Modifiers = Array<
   }
 >
 export type DeckCards = Array<Heroes[number] | Modifiers[number]>
-export const deck: DeckCards = []
+export let deck: DeckCards = []
 
 function shuffleArray() {
   for (let i = deck.length - 1; i > 0; i--) {
@@ -24,7 +24,12 @@ function shuffleArray() {
   }
 }
 
+export const resetDeck = () => {
+  deck = []
+}
+
 export const initDeck = () => {
+  resetDeck()
   allHeroes.forEach((hero) =>
     deck.push({ ...hero, effect: new Function(hero.effect.arguments, hero.effect.body) }),
   )
