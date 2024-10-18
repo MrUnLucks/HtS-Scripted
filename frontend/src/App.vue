@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-
 const router = useRouter()
 
 const toLogin = () => {
@@ -12,6 +11,7 @@ const toLogin = () => {
     <main>
       <RouterView />
     </main>
-    <Hand />
+    <!-- <Hand /> -->
+    <TestDrag />
   </div>
 </template>
