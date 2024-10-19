@@ -35,7 +35,10 @@ export const initDeck = () => {
   )
   allModifiers.forEach((modifier) => {
     for (let i = 0; i < modifier.count; i++) {
-      deck.push(modifier)
+      deck.push({
+        ...modifier,
+        effect: new Function(modifier.effect.arguments, modifier.effect.body),
+      })
     }
   })
   shuffleArray()
