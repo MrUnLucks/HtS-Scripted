@@ -1,14 +1,47 @@
 <script setup lang="ts">
 import { CardProps } from './Card.props'
+import { onLongPress, useMousePressed } from '@vueuse/core'
+import { ref, computed, watch } from 'vue'
+
 defineProps<CardProps>()
+
+// TODO: drag on zoom is bugged
+const card = ref<HTMLElement>()
+const { pressed } = useMousePressed({ target: card })
+const longPressedHook = ref(false)
+
+const zoom = computed(() => pressed.value && longPressedHook.value)
+// const zoom = computed(() => true) //Testing zoom component
+
+watch(pressed, () => {
+  if (!pressed.value) {
+    longPressedHook.value = false
+  }
+})
+
+onLongPress(card, (e) => (longPressedHook.value = true), {
+  distanceThreshold: 24,
+  delay: 400,
+})
 </script>
 <template>
-  <div class="flex flex-col gap-2 p-2 items-center">
-    <p class="">{{ name }}</p>
-    <div>
+  <div class="relative no-drag">
+    <div ref="card" class="card__container flex flex-col gap-2 p-2 items-center">
+      <p class="card__name noselect">{{ name }}</p>
+      <div>
+        <img
+          :src="`/src/assets/playingcards/${id}.png`"
+          class="card__image h-[100px] pointer-events-none"
+        />
+      </div>
+    </div>
+    <div
+      class="card__image-zoom-alpha-layer fixed md:absolute z-[100] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit w-screen md:w-[50vw] p-4"
+      v-show="zoom"
+    >
       <img
+        class="card__image-zoomed h-full w-full noselect"
         :src="`/src/assets/playingcards/${id}.png`"
-        class="h-[100px] pointer-events-none noselect"
       />
     </div>
   </div>

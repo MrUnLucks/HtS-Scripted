@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import draggable from 'vuedraggable'
 import { socket } from '../socket'
 
 const handCards = ref<any[]>()
 socket.on('hand_update', (playerHand) => (handCards.value = playerHand))
 
-const list2 = ref<Array<string>>(['asd'])
+const usedCardList = ref<Array<string>>(['asd'])
 const drag = ref(false)
-const dragOptions = {
+
+const dragOptions = computed(() => ({
   animation: 200,
   group: 'externalDropZone',
-  disabled: false,
-  ghostClass: 'ghost',
-}
+}))
 </script>
 
 <template>
@@ -29,7 +28,7 @@ const dragOptions = {
         v-bind="dragOptions"
       >
         <template #item="item">
-          <Card class="transition-transform ease-in duration-150" v-bind="item.element" />
+          <Card v-bind="item.element" />
         </template>
       </draggable>
     </div>
@@ -38,7 +37,7 @@ const dragOptions = {
       <h3>Drop zone</h3>
       <draggable
         class="flex items-center justify-center p-2"
-        :list="list2"
+        v-model="usedCardList"
         group="externalDropZone"
         item-key="name"
       >
