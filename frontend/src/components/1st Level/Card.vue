@@ -29,10 +29,7 @@ onLongPress(card, (e) => (longPressedHook.value = true), {
     <div ref="card" class="card__container flex flex-col gap-2 p-2 items-center">
       <p class="card__name noselect">{{ name }}</p>
       <div>
-        <img
-          :src="`/src/assets/playingcards/${id}.png`"
-          class="card__image h-[100px] pointer-events-none"
-        />
+        <img :src="`/src/assets/playingcards/${id}.png`" class="card__image h-[100px] noselect" />
       </div>
     </div>
     <div
