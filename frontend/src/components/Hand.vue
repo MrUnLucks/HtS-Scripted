@@ -17,11 +17,11 @@ const dragOptions = {
 </script>
 
 <template>
-  <div class="row">
+  <div class="flex flex-col gap-2">
     <div class="col-3">
       <h3>Hand:</h3>
       <draggable
-        class="list-group flex gap-2"
+        class="flex gap-2 w-full justify-center"
         v-model="handCards"
         item-key="name"
         @start="drag = true"
@@ -37,7 +37,7 @@ const dragOptions = {
     <div class="col-3">
       <h3>Drop zone</h3>
       <draggable
-        class="list-group flex items-center justify-center p-2"
+        class="flex items-center justify-center p-2"
         :list="list2"
         group="externalDropZone"
         item-key="name"
