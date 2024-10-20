@@ -11,7 +11,6 @@ const toLogin = () => {
     <main>
       <RouterView />
     </main>
-    <!-- <Hand /> -->
-    <TestDrag />
+    <Hand />
   </div>
 </template>

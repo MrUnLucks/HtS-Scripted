@@ -1,22 +1,51 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import draggable from 'vuedraggable'
 import { socket } from '../socket'
-import { useSortable } from '@vueuse/integrations/useSortable' //https://vueuse.org/integrations/useSortable/
 
-// const el = ref<HTMLElement | null>(null)
 const handCards = ref<any[]>()
 socket.on('hand_update', (playerHand) => (handCards.value = playerHand))
 
-const el = ref<HTMLElement | null>(null)
-const { option } = useSortable(el, handCards, {
-  animation: 150,
-})
+const list2 = ref<Array<string>>(['asd'])
+const drag = ref(false)
+const dragOptions = {
+  animation: 200,
+  group: 'externalDropZone',
+  disabled: false,
+  ghostClass: 'ghost',
+}
 </script>
+
 <template>
-  <div ref="el" class="flex gap-2 p-4 w-300px h-200px m-auto bg-gray-500/5 rounded">
-    <div v-for="card in handCards" :key="card.id" class="h20 bg-gray-500/5 rounded p-3">
-      <Card v-bind="card" />
+  <div class="row">
+    <div class="col-3">
+      <h3>Hand:</h3>
+      <draggable
+        class="list-group flex gap-2"
+        v-model="handCards"
+        item-key="name"
+        @start="drag = true"
+        @end="drag = false"
+        v-bind="dragOptions"
+      >
+        <template #item="item">
+          <Card class="transition-transform ease-in duration-150" v-bind="item.element" />
+        </template>
+      </draggable>
+    </div>
+
+    <div class="col-3">
+      <h3>Drop zone</h3>
+      <draggable
+        class="list-group flex items-center justify-center p-2"
+        :list="list2"
+        group="externalDropZone"
+        item-key="name"
+      >
+        <template #item="{ element }">
+          <div class="list-group-item hidden">{{ element }}</div>
+        </template>
+      </draggable>
     </div>
   </div>
-  {{ handCards }}
 </template>
