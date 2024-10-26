@@ -34,6 +34,6 @@ io.on('connection', async (socket) => {
     const rawListener = await import(`./listeners/${file}`)
     const listener = rawListener.default
     if (!listener) console.error(`listener ${listener} does not contain a default import!`)
-    socket.on(listener.name, (...args: any[]) => listener.execute(socket, io, ...args))
+    socket.on(listener.name, (...args: any[]) => listener.execute(...args)(socket, io))
   }
 })
