@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'prettier',
+    './.eslintrc-auto-import.json',
+  ],
   env: {
     node: true,
     es6: true,
@@ -11,4 +16,4 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
   },
-};
+}

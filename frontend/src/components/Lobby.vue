@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import { socket } from '../socket'
 import { useRouter } from 'vue-router'
 import { Players } from '../../../lobby/players'

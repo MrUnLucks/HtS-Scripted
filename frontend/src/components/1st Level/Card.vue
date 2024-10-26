@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { CardProps } from './Card.props'
-import { onLongPress, useMousePressed } from '@vueuse/core'
-import { ref, computed, watch } from 'vue'
 
 defineProps<CardProps>()
 

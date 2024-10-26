@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import { socket } from '../socket'
 
 const history = ref<string[]>([])

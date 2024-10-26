@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import { socket } from '../socket'
 import { usePlayerStore } from '../stores/player'
 

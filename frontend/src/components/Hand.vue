@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import draggable from 'vuedraggable'
 import { socket } from '../socket'
 import { DeckCards } from '../../../game/deck'
