@@ -4,7 +4,7 @@ import { ExtendedServer, ExtendedSocket } from '../types/'
 
 export default {
   name: 'login' as const,
-  execute(socket: ExtendedSocket, io: ExtendedServer, data: { name: string }) {
+  execute: (data: { name: string }) => (socket: ExtendedSocket, io: ExtendedServer) => {
     // console.log(io.sockets.adapter.sids.size);
     socket.data.name = data.name
     socket.data.id = `${data.name.toLowerCase()}_${Math.random().toString().substring(2, 9)}`

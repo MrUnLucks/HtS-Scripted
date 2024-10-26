@@ -9,14 +9,20 @@ type Prettify<T> = {
   [K in keyof T]: T[K]
 } & {}
 
-type GenericExecute<T> = T extends { execute: (...args: infer A) => any } ? A : never
+type HasExecute<T> = T extends {
+  execute: (...args: any) => any
+}
+  ? T['execute']
+  : never
 
-type Payload<T> = GenericExecute<T> extends { 2: unknown } ? GenericExecute<T>[2] : undefined
-
+type HasSecondFunction<T> = T extends (...args: any) => any ? Parameters<T> : false
+type IsUndefined<T> = T extends undefined ? any : T
+type Payload<T> = (...args: HasSecondFunction<HasExecute<T>>) => void
 export type AllListeners = Prettify<
   Record<typeof login.name, Payload<typeof login>> &
     Record<typeof message.name, Payload<typeof message>> &
     Record<typeof player_ready.name, Payload<typeof player_ready>> &
-    Record<typeof request_players.name, typeof request_players> &
-    Record<typeof finish_turn.name, typeof finish_turn>
+    Record<typeof request_players.name, Payload<typeof request_players>> &
+    Record<typeof finish_turn.name, Payload<typeof finish_turn>> &
+    Record<typeof disconnect.name, Payload<typeof disconnect>>
 >

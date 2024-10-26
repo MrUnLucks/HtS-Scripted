@@ -4,7 +4,7 @@ import { ExtendedSocket } from '../types/'
 
 export default {
   name: 'disconnect' as const,
-  execute(socket: ExtendedSocket) {
+  execute: () => (socket: ExtendedSocket) => {
     removePlayer(socket.data.id)
     removePlayerTurn(socket.data.id)
     console.log('Client disconnected')

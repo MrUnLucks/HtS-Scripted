@@ -10,11 +10,8 @@ const sendData = () => {
   message.value = ''
 }
 
-// TODO: move all types to dedicated module
-type MessagePayload = { name: string; message: string }
-
 onMounted(() => {
-  socket.on('message', (data: MessagePayload) => {
+  socket.on('message', (data) => {
     history.value.push(`${data.name} : ${data.message}`)
   })
 

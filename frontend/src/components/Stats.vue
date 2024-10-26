@@ -9,7 +9,7 @@ const finishTurn = () => {
 }
 const currentPlayer = ref('')
 
-socket.on('turn_start', ({ name, id }: { name: string; id: string }) => {
+socket.on('turn_start', ({ name, id }) => {
   currentPlayer.value = id === playerStore.myId ? 'Myself' : name
 })
 </script>

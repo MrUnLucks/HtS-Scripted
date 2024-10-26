@@ -1,9 +1,9 @@
 import { players } from '../lobby/players'
-import { ExtendedSocket } from '../types/'
+import { ExtendedServer, ExtendedSocket } from '../types/'
 
 export default {
   name: 'request_players' as const,
-  execute(socket: ExtendedSocket) {
+  execute: () => (socket: ExtendedSocket, io: ExtendedServer) => {
     socket.emit('players_lobby', players)
   },
 }

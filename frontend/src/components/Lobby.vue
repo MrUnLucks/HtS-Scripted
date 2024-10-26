@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { socket } from '../socket'
 import { useRouter } from 'vue-router'
+import { Players } from '../../../lobby/players'
 const router = useRouter()
 
 onMounted(() => {
@@ -10,8 +11,8 @@ onMounted(() => {
 
 // TODO: unify type payload for BE and FE
 
-const players = ref<any>()
-socket.on('players_lobby', (playersLobby: any) => {
+const players = ref<Players>()
+socket.on('players_lobby', (playersLobby) => {
   players.value = playersLobby
 })
 

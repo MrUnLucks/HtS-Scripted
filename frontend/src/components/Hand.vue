@@ -2,8 +2,9 @@
 import { computed, ref } from 'vue'
 import draggable from 'vuedraggable'
 import { socket } from '../socket'
+import { DeckCards } from '../../../game/deck'
 
-const handCards = ref<any[]>()
+const handCards = ref<DeckCards>()
 socket.on('hand_update', (playerHand) => (handCards.value = playerHand))
 
 const usedCardList = ref<Array<string>>(['asd'])
