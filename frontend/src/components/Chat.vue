@@ -6,7 +6,7 @@ const history = ref<string[]>([])
 const message = ref('')
 
 const sendData = () => {
-  socket.emit('message', message.value)
+  socket.emit('message', { message: message.value })
   message.value = ''
 }
 

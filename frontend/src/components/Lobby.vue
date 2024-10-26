@@ -9,8 +9,6 @@ onMounted(() => {
   socket.emit('request_players')
 })
 
-// TODO: unify type payload for BE and FE
-
 const players = ref<Players>()
 socket.on('players_lobby', (playersLobby) => {
   players.value = playersLobby
