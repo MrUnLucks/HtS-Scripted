@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { socket } from '../socket'
-import { usePlayerStore } from '../stores/player'
+import { usePlayerStore } from '../stores/players'
 
 const playerStore = usePlayerStore()
 const finishTurn = () => {

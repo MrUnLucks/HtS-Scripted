@@ -4,5 +4,6 @@
     <!-- <Chat /> -->
     <Stats />
     <Lobby />
+    <Board />
   </div>
 </template>

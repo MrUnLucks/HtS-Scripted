@@ -45,19 +45,23 @@ export const initDeck = () => {
   io.emit('deck_count', deck.length)
 }
 
+export const draw = (playerId: string, numberOfCards: number) => {
+  let playerHand = players[playerId].handCards
+  playerHand = deck.splice(0, numberOfCards)
+  io.sockets.sockets.forEach((socket) => {
+    if (playerId === socket.data.id) {
+      socket.emit('hand_update', playerHand)
+    }
+  })
+  io.emit('hand_count', { id: playerId, count: playerHand.length })
+  io.emit('deck_count', deck.length)
+}
+
 export const drawInitialCards = () => {
   const NUMBER_OF_CARDS = 3
   // TODO: check remaining cards
   const playersId = Object.keys(players)
   playersId.forEach((playerId) => {
-    let playerHand = players[playerId].handCards
-    playerHand = deck.splice(0, NUMBER_OF_CARDS)
-    console.log(deck.map((el) => el.id))
-
-    io.sockets.sockets.forEach((socket) => {
-      if (playerId === socket.data.id) {
-        socket.emit('hand_update', playerHand)
-      }
-    })
+    draw(playerId, NUMBER_OF_CARDS)
   })
 }

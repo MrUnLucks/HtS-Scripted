@@ -1,0 +1,3 @@
+<template>
+  <Deck></Deck>
+</template>

@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { socket } from '../socket'
-import { useRouter } from 'vue-router'
-import { Players } from '../../../lobby/players'
-const router = useRouter()
+import { usePlayerStore } from '../stores/players'
 
 onMounted(() => {
   socket.emit('request_players')
 })
 
-const players = ref<Players>()
-socket.on('players_lobby', (playersLobby) => {
-  players.value = playersLobby
-})
+const players = computed(() => usePlayerStore().players)
 
 const readyHandler = () => {
   socket.emit('player_ready')

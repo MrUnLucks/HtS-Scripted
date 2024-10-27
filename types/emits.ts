@@ -13,6 +13,7 @@ type login = () => void
 type finish_turn = () => void
 type your_id = (id: string) => void
 type game_start = () => void
+type hand_count = (data: { id: string; count: number }) => void
 
 export type AllEmits = {
   deck_count: deck_count
@@ -26,4 +27,5 @@ export type AllEmits = {
   login: login
   finish_turn: finish_turn
   game_start: game_start
+  hand_count: hand_count
 }
