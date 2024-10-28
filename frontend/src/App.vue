@@ -7,7 +7,7 @@ useCardsStore().initListeners()
 </script>
 <template>
   <div class="flex flex-col gap-4 w-screen">
-    {{ usePlayerStore().players }}
+    {{ usePlayerStore().actions }}
     <main>
       <RouterView />
     </main>

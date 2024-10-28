@@ -7,13 +7,22 @@ export type Player = {
   name: string
   leader?: Leaders[number]
   handCards: DeckCards
+  actions: number
+  isCurrentActivePlayer: boolean
 }
 export const players: { [id: string]: Player } = {}
 export const playersLength = Object.keys(players).length
 export type Players = typeof players
 
 export const addPlayer = (player: { id: string; name: string }) => {
-  players[player.id] = { id: player.id, ready: false, name: player.name, handCards: [] }
+  players[player.id] = {
+    id: player.id,
+    ready: false,
+    name: player.name,
+    handCards: [],
+    actions: 3,
+    isCurrentActivePlayer: false,
+  }
 }
 
 export const removePlayer = (playerId: string) => {

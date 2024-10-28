@@ -1,7 +1,6 @@
 import { DeckCards } from '../game/deck'
 import { Player, Players } from '../lobby/players'
 
-// TODO: modularize
 type turn_start = (data: { id: string; name: string }) => void
 type leader = (data: { id: Player['id']; leader: Player['leader'] }) => void
 type deck_count = (deck_count: number) => void
@@ -14,6 +13,7 @@ type finish_turn = () => void
 type your_id = (id: string) => void
 type game_start = () => void
 type hand_count = (data: { id: string; count: number }) => void
+type update_actions = (data: { id: string; numberOfActions: number }) => void
 
 export type AllEmits = {
   deck_count: deck_count
@@ -28,4 +28,5 @@ export type AllEmits = {
   finish_turn: finish_turn
   game_start: game_start
   hand_count: hand_count
+  update_actions: update_actions
 }
