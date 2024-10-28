@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
-import { socket } from '../socket'
-import { DeckCards } from '../../../game/deck'
-
-const handCards = ref<DeckCards>()
-socket.on('hand_update', (playerHand) => (handCards.value = playerHand))
+import { useCardsStore } from '../stores/cards'
 
 const usedCardList = ref<Array<string>>(['asd'])
 const drag = ref(false)
@@ -21,7 +17,7 @@ const dragOptions = computed(() => ({
       <h3>Hand:</h3>
       <draggable
         class="flex gap-2 w-full justify-center"
-        v-model="handCards"
+        :list="useCardsStore().handCards"
         item-key="name"
         @start="drag = true"
         @end="drag = false"

@@ -4,7 +4,7 @@ import { usePlayerStore } from '../stores/players'
 
 const playerStore = usePlayerStore()
 
-const nameModelValue = ref('Asd')
+const nameModelValue = ref('Test')
 
 onMounted(() => {
   socket.disconnect()
