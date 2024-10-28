@@ -4,6 +4,8 @@ import { ExtendedSocket } from '../types/'
 export default {
   name: 'draw' as const,
   execute: (numberOfCards: number) => (socket: ExtendedSocket) => {
-    draw(socket.id, numberOfCards)
+    console.log(socket.id)
+
+    draw(socket.data.id, numberOfCards)
   },
 }

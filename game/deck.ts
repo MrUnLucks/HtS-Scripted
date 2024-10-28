@@ -47,7 +47,10 @@ export const initDeck = () => {
 
 export const draw = (playerId: string, numberOfCards: number) => {
   let playerHand = players[playerId].handCards
-  playerHand = deck.splice(0, numberOfCards)
+  const drawedCards = deck.splice(0, numberOfCards)
+  drawedCards.forEach((cardDrawed) => {
+    playerHand.push(cardDrawed)
+  })
   io.sockets.sockets.forEach((socket) => {
     if (playerId === socket.data.id) {
       socket.emit('hand_update', playerHand)
