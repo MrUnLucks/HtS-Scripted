@@ -14,6 +14,7 @@ export const gameLoop = async () => {
     for (let i = 0; i < turnOrder.length; i++) {
       const playerId = turnOrder[i]
       players[playerId].isCurrentActivePlayer = true
+      players[playerId].actions = 3 // TODO: different action points
 
       // Find the socket for the current player
       const socket = sockets.find((el) => el.data.id === playerId)
