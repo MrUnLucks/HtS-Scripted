@@ -1,5 +1,5 @@
-import { Leaders } from '../game/assignLeader'
-import { DeckCards } from '../game/deck'
+import { Leaders } from './assignLeader'
+import { DeckCards } from './deck'
 
 export type Player = {
   id: string

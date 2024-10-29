@@ -1,5 +1,5 @@
 import db from '../db.json'
-import { players } from '../lobby/players'
+import { players } from './players'
 import { io } from '..'
 
 // TODO: global type for common types like leaders,players, heroes etc..

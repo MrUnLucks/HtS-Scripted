@@ -1,5 +1,5 @@
 import { io } from '..'
-import { players } from '../lobby/players'
+import { players } from './players'
 
 export const consumeAction = (playerId: string, numberOfActions: number) => {
   // NOTE: it should NEVER happen but handle client error for negative ActionPs

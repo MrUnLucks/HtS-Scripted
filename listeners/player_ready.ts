@@ -1,5 +1,5 @@
 import { gameLoop } from '../game/gameLoop'
-import { areAllPlayersReady, players, setPlayerReady } from '../lobby/players'
+import { areAllPlayersReady, players, setPlayerReady } from '../game/players'
 import { ExtendedServer, ExtendedSocket } from '../types/'
 
 export default {

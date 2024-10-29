@@ -1,6 +1,6 @@
 import { consumeAction } from '../game/actions'
 import { draw } from '../game/deck'
-import { players } from '../lobby/players'
+import { players } from '../game/players'
 import { ExtendedSocket } from '../types/'
 
 export default {

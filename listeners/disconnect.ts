@@ -1,5 +1,5 @@
 import { removePlayerTurn } from '../game/turnOrder'
-import { removePlayer } from '../lobby/players'
+import { removePlayer } from '../game/players'
 import { ExtendedSocket } from '../types/'
 
 export default {

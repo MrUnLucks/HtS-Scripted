@@ -1,6 +1,6 @@
 import { io } from '..'
 import db from '../db.json'
-import { players } from '../lobby/players'
+import { players } from './players'
 
 export const allHeroes = db.heroes
 export type Heroes = Array<

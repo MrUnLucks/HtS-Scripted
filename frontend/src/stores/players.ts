@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { Players } from '../../../lobby/players'
+import { Players } from '../../../game/players'
 import { socket } from '../socket'
 
 export const usePlayerStore = defineStore('player', () => {

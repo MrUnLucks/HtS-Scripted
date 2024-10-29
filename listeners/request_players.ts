@@ -1,4 +1,4 @@
-import { players } from '../lobby/players'
+import { players } from '../game/players'
 import { ExtendedServer, ExtendedSocket } from '../types/'
 
 export default {

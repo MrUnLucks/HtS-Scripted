@@ -1,5 +1,5 @@
 import { DeckCards } from '../game/deck'
-import { Player, Players } from '../lobby/players'
+import { Player, Players } from '../game/players'
 
 type turn_start = (data: { id: string; name: string }) => void
 type leader = (data: { id: Player['id']; leader: Player['leader'] }) => void

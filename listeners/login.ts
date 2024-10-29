@@ -1,5 +1,5 @@
 import { addPlayerTurn } from '../game/turnOrder'
-import { addPlayer, players } from '../lobby/players'
+import { addPlayer, players } from '../game/players'
 import { ExtendedServer, ExtendedSocket } from '../types/'
 
 export default {

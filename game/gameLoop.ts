@@ -1,7 +1,7 @@
 import { turnOrder, randomizePlayersTurn } from './turnOrder'
 import { io } from '..'
 import { drawInitialCards, initDeck } from './deck'
-import { players } from '../lobby/players'
+import { players } from './players'
 
 export const gameLoop = async () => {
   let turnNumber = 0
