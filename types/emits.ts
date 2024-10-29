@@ -1,4 +1,4 @@
-import { DeckCards } from '../game/deck'
+import { DeckCard, DeckCards } from '../game/deck'
 import { Player, Players } from '../game/players'
 
 type turn_start = (data: { id: string; name: string }) => void
@@ -14,6 +14,7 @@ type your_id = (id: string) => void
 type game_start = () => void
 type hand_count = (data: { id: string; count: number }) => void
 type update_actions = (data: { id: string; numberOfActions: number }) => void
+type play_hero = (card: DeckCard) => void
 
 export type AllEmits = {
   deck_count: deck_count
@@ -29,4 +30,5 @@ export type AllEmits = {
   game_start: game_start
   hand_count: hand_count
   update_actions: update_actions
+  play_hero: play_hero
 }

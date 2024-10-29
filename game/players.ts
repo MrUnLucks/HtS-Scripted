@@ -9,6 +9,7 @@ export type Player = {
   handCards: DeckCards
   actions: number
   isCurrentActivePlayer: boolean
+  board: DeckCards
 }
 export const players: { [id: string]: Player } = {}
 export const playersLength = Object.keys(players).length
@@ -22,6 +23,7 @@ export const addPlayer = (player: { id: string; name: string }) => {
     handCards: [],
     actions: 3,
     isCurrentActivePlayer: false,
+    board: [],
   }
 }
 

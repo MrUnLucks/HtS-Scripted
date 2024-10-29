@@ -3,18 +3,20 @@ import db from '../db.json'
 import { players } from './players'
 
 export const allHeroes = db.heroes
-export type Heroes = Array<
-  Omit<(typeof allHeroes)[number], 'effect'> & {
-    effect: Function
-  }
->
+export type Hero = Omit<(typeof allHeroes)[number], 'effect'> & {
+  effect: Function
+}
+export type Heroes = Array<Hero>
+
 export const allModifiers = db.modifiers
-export type Modifiers = Array<
-  Omit<(typeof allModifiers)[number], 'effect'> & {
-    effect: Function
-  }
->
-export type DeckCards = Array<Heroes[number] | Modifiers[number]>
+export type Modifier = Omit<(typeof allModifiers)[number], 'effect'> & {
+  effect?: Function
+}
+export type Modifiers = Array<Modifier>
+
+export type DeckCard = Hero | Modifier
+export type DeckCards = Array<DeckCard>
+
 export let deck: DeckCards = []
 
 function shuffleArray() {
