@@ -16,6 +16,7 @@ declare module 'vue' {
     Hand2: typeof import('./src/components/Hand2.vue')['default']
     Lobby: typeof import('./src/components/Lobby.vue')['default']
     Login: typeof import('./src/components/Login.vue')['default']
+    Party: typeof import('./src/components/Party.vue')['default']
     ReadyIcon: typeof import('./src/components/1st Level/ReadyIcon.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

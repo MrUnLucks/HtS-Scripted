@@ -1,8 +1,23 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 import { useCardsStore } from '../stores/cards'
+import { DeckCards } from '../../../game/deck'
 
-const usedCardList = ref<Array<string>>(['asd'])
+const playCardZone = ref<DeckCards>([])
+let previousPlayCardZone: DeckCards = []
+watch(
+  playCardZone,
+  () => {
+    // TODO!: not the safest option, refactor
+    const cardPlayed = playCardZone.value.pop()
+    if (!cardPlayed) return undefined
+    console.log(cardPlayed)
+
+    useCardsStore().playCard(cardPlayed)
+    previousPlayCardZone = playCardZone.value
+  },
+  { deep: true },
+)
 const drag = ref(false)
 
 const dragOptions = computed(() => ({
@@ -18,7 +33,7 @@ const dragOptions = computed(() => ({
       <draggable
         class="flex gap-2 w-full justify-center"
         :list="useCardsStore().handCards"
-        item-key="name"
+        item-key="id"
         @start="drag = true"
         @end="drag = false"
         v-bind="dragOptions"
@@ -28,14 +43,14 @@ const dragOptions = computed(() => ({
         </template>
       </draggable>
     </div>
-
+    {{ playCardZone }}
     <div class="col-3">
       <h3>Drop zone</h3>
       <draggable
         class="flex items-center justify-center p-2"
-        v-model="usedCardList"
+        v-model="playCardZone"
         group="externalDropZone"
-        item-key="name"
+        item-key="id"
       >
         <template #item="{ element }">
           <div class="list-group-item hidden">{{ element }}</div>

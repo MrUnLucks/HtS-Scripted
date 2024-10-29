@@ -1,3 +1,4 @@
 <template>
-  <Deck></Deck>
+  <Deck />
+  <Party />
 </template>

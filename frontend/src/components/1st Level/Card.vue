@@ -8,8 +8,8 @@ const card = ref<HTMLElement>()
 const { pressed } = useMousePressed({ target: card })
 const longPressedHook = ref(false)
 
-const zoom = computed(() => pressed.value && longPressedHook.value)
-// const zoom = computed(() => true) //Testing zoom component
+// const zoom = computed(() => pressed.value && longPressedHook.value)
+const zoom = computed(() => false)
 
 watch(pressed, () => {
   if (!pressed.value) {
