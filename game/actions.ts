@@ -2,7 +2,8 @@ import { io } from '..'
 import { players } from './players'
 
 export const consumeAction = (playerId: string, numberOfActions: number) => {
-  // NOTE: it should NEVER happen but handle client error for negative ActionPs
+  // TODO: map errors
+  if (!players[playerId].isCurrentActivePlayer) return undefined
   const remainingActions = players[playerId].actions - numberOfActions
   if (remainingActions < 0) return undefined
   players[playerId].actions -= numberOfActions

@@ -5,7 +5,6 @@ const isHeroInHand = (heroId: string, playerId: string) => {
 }
 
 export const playHero = (heroId: string, playerId: string) => {
-  // NOTE: it should NEVER happen but handle server error
   // TODO: map errors
   if (!isHeroInHand(heroId, playerId)) return undefined
   if (players[playerId].actions <= 0) return undefined
