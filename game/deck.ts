@@ -6,15 +6,16 @@ export const allHeroes = db.heroes
 export type Hero = Omit<(typeof allHeroes)[number], 'effect'> & {
   effect: Function
 }
-export type Heroes = Array<Hero>
 
 export const allModifiers = db.modifiers
 export type Modifier = Omit<(typeof allModifiers)[number], 'effect'> & {
   effect?: Function
 }
-export type Modifiers = Array<Modifier>
 
-export type DeckCard = Hero | Modifier
+export const allChallenges = db.challenges
+export type Challenge = (typeof allChallenges)[number]
+
+export type DeckCard = Hero | Modifier | Challenge
 export type DeckCards = Array<DeckCard>
 
 export let deck: DeckCards = []
@@ -36,11 +37,17 @@ export const initDeck = () => {
     deck.push({ ...hero, effect: new Function(hero.effect.arguments, hero.effect.body) }),
   )
   allModifiers.forEach((modifier) => {
+    // TODO: modularize count insert
     for (let i = 0; i < modifier.count; i++) {
       deck.push({
         ...modifier,
         effect: new Function(modifier.effect.arguments, modifier.effect.body),
       })
+    }
+  })
+  allChallenges.forEach((challenge) => {
+    for (let i = 0; i < challenge.count; i++) {
+      deck.push(challenge)
     }
   })
   shuffleArray()

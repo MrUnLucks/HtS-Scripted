@@ -81,5 +81,15 @@
       "effect": { "arguments": "a,b", "body": "return a+b;" },
       "count": 3
     }
+  ],
+  "challenges": [
+    {
+      "name": "Challenge",
+      "type": "challenge",
+      "id": "challenge",
+      "count": 3,
+      "requisiteHeroType": "",
+      "modifier": 3
+    }
   ]
 }
