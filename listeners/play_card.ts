@@ -1,6 +1,6 @@
 import { DeckCard } from '../game/deck'
 import { players } from '../game/players'
-import { playHero } from '../game/playHeroes'
+import { playHero } from '../game/playHero'
 import { ExtendedServer, ExtendedSocket } from '../types'
 
 export default {
