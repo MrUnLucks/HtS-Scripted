@@ -15,7 +15,7 @@ export default {
     playerHand.splice(cardPlayedIndex, 1)
     // TODO: global const type for all card types
     if (card.type === 'hero') {
-      playHero(card, socket.data.id)
+      playHero(card, socket)
     }
   },
 }
