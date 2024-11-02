@@ -4,9 +4,9 @@ import { useCardsStore } from '../stores/cards'
 
 <template>
   <div>
-    Party:
+    My Party:
     <div class="flex gap-4 justify-center">
-      <div v-for="card in useCardsStore().party">
+      <div v-for="card in useCardsStore().myParty">
         <Card v-bind="card" />
       </div>
     </div>

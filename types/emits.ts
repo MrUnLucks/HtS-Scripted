@@ -14,7 +14,7 @@ type your_id = (id: string) => void
 type game_start = () => void
 type hand_count = (data: { id: string; count: number }) => void
 type update_actions = (data: { id: string; numberOfActions: number }) => void
-type party_update = (cards: DeckCards) => void
+type party_update = (data: { id: string; party: DeckCards }) => void
 
 export type AllEmits = {
   deck_count: deck_count

@@ -6,7 +6,8 @@ import { usePlayerStore } from './players'
 export const useCardsStore = defineStore('cards', () => {
   const deckCount = ref(0)
   const handCards = ref<DeckCards>([])
-  const party = ref<DeckCards>([])
+  const parties = ref<Map<string, DeckCards>>(new Map())
+  const myParty = computed(() => parties.value.get(usePlayerStore().myId))
 
   const draw = (numberOfCards: number) => {
     // TODO: handle frontend error
@@ -22,8 +23,8 @@ export const useCardsStore = defineStore('cards', () => {
       deckCount.value = count
     })
     socket.on('hand_update', (playerHand) => (handCards.value = playerHand))
-    socket.on('party_update', (partyUpdated) => {
-      party.value = partyUpdated
+    socket.on('party_update', ({ id, party }) => {
+      parties.value.set(id, party)
     })
   }
 
@@ -31,7 +32,7 @@ export const useCardsStore = defineStore('cards', () => {
     initListeners,
     deckCount,
     handCards,
-    party,
+    myParty,
     draw,
     playCard,
   }

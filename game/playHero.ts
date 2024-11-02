@@ -12,6 +12,6 @@ export const playHero = (heroCard: DeckCard, socket: ExtendedSocket) => {
   if (!players[playerId].isCurrentActivePlayer) return undefined
 
   players[playerId].party.push(heroCard)
-  io.emit('party_update', players[playerId].party)
+  io.emit('party_update', { id: playerId, party: players[playerId].party })
   consumeAction(playerId, 1)
 }
