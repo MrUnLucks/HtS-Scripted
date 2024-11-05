@@ -11,7 +11,7 @@ declare module 'vue' {
     Card: typeof import('./src/components/1st Level/Card.vue')['default']
     Chat: typeof import('./src/components/Chat.vue')['default']
     ConnectionManager: typeof import('./src/components/ConnectionManager.vue')['default']
-    Deck: typeof import('./src/components/1st Level/Deck.vue')['default']
+    Deck: typeof import('./src/components/Deck.vue')['default']
     Hand: typeof import('./src/components/Hand.vue')['default']
     Hand2: typeof import('./src/components/Hand2.vue')['default']
     Lobby: typeof import('./src/components/Lobby.vue')['default']

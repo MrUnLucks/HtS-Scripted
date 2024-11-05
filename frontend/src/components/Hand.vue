@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 import { useCardsStore } from '../stores/cards'
+import { usePlayerStore } from '../stores/players'
 import { DeckCards } from '../../../game/deck'
 
 const playCardZone = ref<DeckCards>([])
@@ -44,7 +45,7 @@ const dragOptions = computed(() => ({
       </draggable>
     </div>
     {{ playCardZone }}
-    <div class="col-3">
+    <div class="col-3" v-if="usePlayerStore().isActivePlayer">
       <h3>Drop zone</h3>
       <draggable
         class="flex items-center justify-center p-2"

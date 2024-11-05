@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCardsStore } from '../../stores/cards'
+import { useCardsStore } from '../stores/cards'
 </script>
 <template>
   <div class="flex flex-col gap-2 items-center">
