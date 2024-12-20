@@ -13,7 +13,6 @@ declare module 'vue' {
     ConnectionManager: typeof import('./src/components/ConnectionManager.vue')['default']
     Deck: typeof import('./src/components/Deck.vue')['default']
     Hand: typeof import('./src/components/Hand.vue')['default']
-    Hand2: typeof import('./src/components/Hand2.vue')['default']
     Lobby: typeof import('./src/components/Lobby.vue')['default']
     Login: typeof import('./src/components/Login.vue')['default']
     Party: typeof import('./src/components/Party.vue')['default']
@@ -21,7 +20,5 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Stats: typeof import('./src/components/Stats.vue')['default']
-    TestDrag: typeof import('./src/components/TestDrag.vue')['default']
-    TestDragAnimation: typeof import('./src/components/TestDragAnimation.vue')['default']
   }
 }
